@@ -14,7 +14,7 @@ const LoginPage = () => {
     ev.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:4000/login", {
+      const response = await fetch("https://blog-backend-1-vx3l.onrender.com/login", {
         method: "POST",
         body: JSON.stringify({ usernameOrEmail, password }), // Unified request body
         headers: { "Content-Type": "application/json" },

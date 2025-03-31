@@ -13,7 +13,7 @@ const UpdateBlog = () => {
     const fetchBlogPage = async () => {
       try {
         setLoading(true);
-        const response = await fetch(`http://localhost:4000/blogs/${blogId}`);
+        const response = await fetch(`https://blog-backend-1-vx3l.onrender.com/blogs/${blogId}`);
         const data = await response.json();
         if (response.ok) {
           setBlog(data);
@@ -46,7 +46,7 @@ const UpdateBlog = () => {
     }
 
     try {
-      const res = await fetch(`http://localhost:4000/blogs/${blogId}`, {
+      const res = await fetch(`https://blog-backend-1-vx3l.onrender.com/blogs/${blogId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

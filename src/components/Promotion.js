@@ -12,7 +12,7 @@ const Promotion = () => {
     }
 
     try {
-      const response = await fetch('http://localhost:4000/subscribe', {
+      const response = await fetch('https://blog-backend-1-vx3l.onrender.com/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email }),

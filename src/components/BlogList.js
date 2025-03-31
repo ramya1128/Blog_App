@@ -9,7 +9,7 @@ const BlogList = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch('http://localhost:4000/blogs')
+        fetch('https://blog-backend-1-vx3l.onrender.com/blogs')
             .then((response) => response.json())
             .then((data) => {
                 if (Array.isArray(data)) {

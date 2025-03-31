@@ -36,7 +36,7 @@ const CreateBlogPage = () => {
     const token = localStorage.getItem("token");
   
     try {
-      const response = await fetch("http://localhost:4000/blogs/create", {
+      const response = await fetch("https://blog-backend-1-vx3l.onrender.com/blogs/create", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
