@@ -17,7 +17,7 @@ const BlogPage = () => {
 
   const fetchBlogs = async () => {
     try {
-      const response = await fetch("https://blog-backend-1-vx3l.onrender.com/blogs");
+      const response = await fetch("https://blog-backend-5tkj.onrender.com/blogs");
       if (!response.ok) throw new Error("Failed to fetch blogs");
       const data = await response.json();
       setBlogs(data.blogs);
@@ -31,7 +31,7 @@ const BlogPage = () => {
 
     try {
       const token = localStorage.getItem("token"); 
-      const response = await fetch(`https://blog-backend-1-vx3l.onrender.com/delete-blog/${id}`, {
+      const response = await fetch(`https://blog-backend-5tkj.onrender.com/delete-blog/${id}`, {
         method: "DELETE",
         headers: {
           "Authorization": `Bearer ${token}`,
@@ -60,7 +60,7 @@ const BlogPage = () => {
 
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch(`https://blog-backend-1-vx3l.onrender.com/update-blog/${id}`, {
+      const response = await fetch(`https://blog-backend-5tkj.onrender.com/update-blog/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

@@ -45,7 +45,7 @@ const ProfilePage = () => {
 
   const handleSave = async () => {
     try {
-      const response = await fetch('https://blog-backend-1-vx3l.onrender.com/profile', {
+      const response = await fetch('https://blog-backend-5tkj.onrender.com/profile', {
         method: 'PUT',
         headers: {
           'Authorization': `Bearer ${token}`,
