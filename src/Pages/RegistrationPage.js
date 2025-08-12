@@ -13,7 +13,7 @@ export default function RegistrationPage({ onLogin }) {
     ev.preventDefault();
 
     try {
-      const response = await fetch("https://blog-backend-1-vx3l.onrender.com/register", {
+      const response = await fetch("https://blog-backend-5tkj.onrender.com/register", {
         method: "POST",
         body: JSON.stringify({ username, email, password }),
         headers: { "Content-Type": "application/json" },
