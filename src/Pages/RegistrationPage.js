@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import '../App.css';
+import "../App.css";
 
 export default function RegistrationPage({ onLogin }) {
   const [username, setUsername] = useState("");
-  const [email, setEmail] = useState(""); 
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
@@ -13,23 +13,26 @@ export default function RegistrationPage({ onLogin }) {
     ev.preventDefault();
 
     try {
-      const response = await fetch("https://blog-backend-5tkj.onrender.com/register", {
-        method: "POST",
-        body: JSON.stringify({ username, email, password }),
-        headers: { "Content-Type": "application/json" },
-      });
+      const response = await fetch(
+        "https://blog-backend-5tkj.onrender.com/register",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ username, email, password }),
+        }
+      );
 
-      if (response.status === 200) {
-        setMessage("Registration successful! You can now log in.");
+      const data = await response.json();
+
+      if (response.ok) {
+        setMessage(data.message || "Registration successful! You can now log in.");
         setIsSuccess(true);
-      } else if (response.status === 400) {
-        setMessage("User Already Exists");
-        setIsSuccess(false);
       } else {
-        setMessage("Registration failed. Please try again.");
+        setMessage(data.message || "Registration failed. Please try again.");
         setIsSuccess(false);
       }
     } catch (error) {
+      console.error("Error during registration:", error);
       setMessage("An error occurred. Please try again later.");
       setIsSuccess(false);
     }
@@ -39,6 +42,7 @@ export default function RegistrationPage({ onLogin }) {
     <div className="register-container">
       <form className="register-form" onSubmit={register}>
         <h1 className="register-title">Register</h1>
+
         <input
           className="input-field1"
           type="text"
@@ -47,14 +51,16 @@ export default function RegistrationPage({ onLogin }) {
           onChange={(ev) => setUsername(ev.target.value)}
           required
         />
+
         <input
           className="input-field1"
-          type="email" // Email input type
+          type="email"
           placeholder="Email"
           value={email}
           onChange={(ev) => setEmail(ev.target.value)}
           required
         />
+
         <input
           className="input-field1"
           type="password"
@@ -63,14 +69,22 @@ export default function RegistrationPage({ onLogin }) {
           onChange={(ev) => setPassword(ev.target.value)}
           required
         />
-        <button className="register-btn" type="submit">Sign Up</button>
+
+        <button className="register-btn" type="submit">
+          Sign Up
+        </button>
+
         {message && (
           <p className={`message ${isSuccess ? "success" : "error"}`}>
             {message}
           </p>
         )}
+
         <p className="login-redirect">
-          Already have an account? <Link className="login-link" to="/login">Sign In</Link>
+          Already have an account?{" "}
+          <Link className="login-link" to="/login">
+            Sign In
+          </Link>
         </p>
       </form>
     </div>
